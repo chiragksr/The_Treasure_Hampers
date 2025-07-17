@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, easeOut } from 'framer-motion'; 
 import { Menu, X } from 'lucide-react'; // For mobile menu icon
 
 const luxuryColors = {
@@ -52,28 +52,33 @@ const Header = () => {
 
   const headerVariants = {
     initial: { y: -100, opacity: 0 },
-    animate: { y: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } },
+    animate: {
+      y: 0,
+      opacity: 1,
+      transition: { duration: 0.5, ease: easeOut }, // ✅ fixed
+    },
     scrolled: {
-      backgroundColor: "rgba(255, 255, 255, 0.95)", // More opaque when scrolled
-      boxShadow: "0 4px 12px rgba(0,0,0,0.08)", // Subtle shadow
-      backdropFilter: "blur(8px)", // Stronger blur
-      height: "70px", // Slightly thinner when scrolled
-      borderBottom: `1px solid ${luxuryColors.border.replace('border-', '')}`, // Use actual color value
-      transition: { duration: 0.3, ease: "easeOut" }
+      backgroundColor: "rgba(255, 255, 255, 0.95)",
+      boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+      backdropFilter: "blur(8px)",
+      height: "70px",
+      borderBottom: "1px solid #d6d3d1", // ✅ hex for border-stone-300
+      transition: { duration: 0.3, ease: easeOut }, // ✅ fixed
     },
     unscrolled: {
-      backgroundColor: "rgba(255, 255, 255, 0.8)", // Slightly transparent when at top
+      backgroundColor: "rgba(255, 255, 255, 0.8)",
       boxShadow: "none",
       backdropFilter: "blur(5px)",
-      height: "80px", // Default height
+      height: "80px",
       borderBottom: "none",
-      transition: { duration: 0.3, ease: "easeOut" }
-    }
+      transition: { duration: 0.3, ease: easeOut }, // ✅ fixed
+    },
   };
 
+
   const mobileMenuVariants = {
-    hidden: { x: "100%", opacity: 0, transition: { duration: 0.4, ease: "easeOut" } },
-    visible: { x: "0%", opacity: 1, transition: { duration: 0.4, ease: "easeOut" } },
+    hidden: { x: "100%", opacity: 0, transition: { duration: 0.4, ease: easeOut } },
+    visible: { x: "0%", opacity: 1, transition: { duration: 0.4, ease: easeOut } },
   };
 
   return (
@@ -187,7 +192,7 @@ const Header = () => {
                 transition={{
                   delay: 0.1 + index * 0.08,
                   duration: 0.3,
-                  ease: "easeOut",
+                  ease: [0.42, 0, 0.58, 1]
                 }}
               >
                 <a

@@ -1,6 +1,5 @@
 "use client";
 
-import { useState, useEffect } from "react"; // Import useState and useEffect
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card"; // Assuming this component is styled for luxury
 // Original import for ContactForm - ensure this file exists and is styled
@@ -437,7 +436,7 @@ export default function TreasureHampersPage() {
             transition={{ delay: 0.3, duration: 0.7 }}
             className="text-2xl md:text-3xl font-playfair-display italic text-white/90 leading-relaxed"
           >
-            "Where every gift tells a story of luxury and heartfelt connection."
+            `&quot;`Where every gift tells a story of luxury and heartfelt connection.`&quot;`
           </motion.p>
 
           {/* Social Icons - More prominent and animated */}
