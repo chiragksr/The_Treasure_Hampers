@@ -9,6 +9,7 @@ import { Instagram, Mail, Phone } from "lucide-react";
 import { BsWhatsapp } from "react-icons/bs";
 import Header from "@/components/ui/header"; // Assuming this component is styled separately
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 // Unified Luxury Color Palette
 const luxuryColors = {
   primary: 'text-stone-800', // Deep, rich dark grey/brown for main text and accents
@@ -42,9 +43,27 @@ const luxuryColors = {
 
 // Product data with more descriptive and luxury-oriented placeholder text
 const products = [
-  { title: "Grandeur Collection", image: "/images/grand.jpg", tag: "Hampers" , description: "A curated selection of luxurious, hand-poured resin art pieces that elevate every celebration."},
-  { title: "Timeless Memories", image: "/images/scrapbook.jpg", tag: "Scrapbooks" , description: "Crafted to last a lifetime—unique keepsakes that capture love, laughter, and legacy."},
-  { title: "Artisan Resin Creations", image: "/images/resin.jpg", tag: "Resin Arts", description: "Where creativity meets craftsmanship—bespoke resin gifts that tell your story beautifully."},
+  {
+    title: "Grandeur Collection",
+    image: `${basePath}/images/grand.jpg`,
+    tag: "Hampers",
+    description:
+      "A curated selection of luxurious, hand-poured resin art pieces that elevate every celebration.",
+  },
+  {
+    title: "Timeless Memories",
+    image: `${basePath}/images/scrapbook.jpg`,
+    tag: "Scrapbooks",
+    description:
+      "Crafted to last a lifetime—unique keepsakes that capture love, laughter, and legacy.",
+  },
+  {
+    title: "Artisan Resin Creations",
+    image: `${basePath}/images/resin.jpg`,
+    tag: "Resin Arts",
+    description:
+      "Where creativity meets craftsmanship—bespoke resin gifts that tell your story beautifully.",
+  },
 ];
 
 // --- Main TreasureHampersPage Component ---
@@ -62,7 +81,7 @@ export default function TreasureHampersPage() {
         className="relative text-center min-h-[90vh] flex flex-col justify-center items-center px-4"
         id="firstSection"
         style={{
-          backgroundImage: `url('/images/heroImage.jpg')`,
+          backgroundImage: `url('${process.env.NEXT_PUBLIC_BASE_PATH}/images/heroImage.jpg')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           backgroundAttachment: 'fixed', // Parallax effect for luxury
@@ -198,12 +217,12 @@ export default function TreasureHampersPage() {
           <h2 className={`text-4xl md:text-5xl font-bold text-center ${luxuryColors.secondary} mb-16 font-playfair-display`}>Explore Our Exquisite Collections</h2>
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 px-6">
             {[
-              { title: "Resin Artistry", image: "/images/watch.jpg" },
-              { title: "Heirloom Scrapbooks", image: "/images/scrap.jpeg" },
-              { title: "Grand Hampers", image: "/images/hamp.jpg" },
-              { title: "Elegant Floral Bouquets", image: "/images/bouquet.png" },
-              { title: "Signature Gift Wrapping", image: "/images/packaging.jpg" },
-              { title: "Bespoke Creations", image: "/images/bespoke.jpg" },
+            { title: "Resin Artistry", image: `${basePath}/images/watch.jpg` },
+            { title: "Heirloom Scrapbooks", image: `${basePath}/images/scrap.jpeg` },
+            { title: "Grand Hampers", image: `${basePath}/images/hamp.jpg` },
+            { title: "Elegant Floral Bouquets", image: `${basePath}/images/bouquet.png` },
+            { title: "Signature Gift Wrapping", image: `${basePath}/images/packaging.jpg` },
+            { title: "Bespoke Creations", image: `${basePath}/images/bespoke.jpg` },
             ].map(({ title, image }) => (
               <motion.div
                 key={title}
@@ -424,7 +443,12 @@ export default function TreasureHampersPage() {
         className={`bg-neutral-800 ${luxuryColors.textLight} text-center text-sm py-16 relative overflow-hidden`} // Darker background, more padding
       >
         {/* Subtle background pattern/texture */}
-        <div className="absolute inset-0 opacity-10" style={{ backgroundImage: `url("/images/footer.png")` }}></div>
+        <div
+          className="absolute inset-0 opacity-10"
+          style={{
+            backgroundImage: `url("${basePath}/images/footer.png")`,
+          }}
+        ></div>
 
         <div className="relative z-10 max-w-5xl mx-auto space-y-12 px-6"> {/* Increased space-y */}
 

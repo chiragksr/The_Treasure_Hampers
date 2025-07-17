@@ -1,7 +1,10 @@
 import type { NextConfig } from "next";
 
+const isProd = process.env.NODE_ENV === "production";
+
 const nextConfig: NextConfig = {
   images: {
+    unoptimized: true, // ✅ disables image optimization for static export
     remotePatterns: [
       {
         protocol: "https",
@@ -11,9 +14,12 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  output: "export", // ✅ Enables static export
-  basePath: "/The_Treasure_Hampers", // ✅ Required for GitHub Pages
-  assetPrefix: "/The_Treasure_Hampers/", // ✅ Required for GitHub Pages
+  output: "export",
+  basePath: isProd ? "/The_Treasure_Hampers" : "",
+  assetPrefix: isProd ? "/The_Treasure_Hampers/" : "",
+  env: {
+    NEXT_PUBLIC_BASE_PATH: isProd ? "/The_Treasure_Hampers" : "",
+  },
 };
 
 export default nextConfig;
