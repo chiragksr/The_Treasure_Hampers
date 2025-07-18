@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
     ],
   },
   output: "export",
-  basePath: isProd ? "/" : "",
+  basePath: isProd ? "/The_Treasure_Hampers" : "",
   assetPrefix: isProd ? "/The_Treasure_Hampers/" : "",
   env: {
     NEXT_PUBLIC_BASE_PATH: isProd ? "/The_Treasure_Hampers" : "",
